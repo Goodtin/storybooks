@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "devops-directive-storybooks-terraform"
-    prefix = "/state/storybooks"
+    bucket = "devops-directive-goodtinstory-terraform"
+    prefix = "/state/goodtinstory"
   }
 }

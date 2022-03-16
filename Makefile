@@ -1,4 +1,4 @@
-PROJECT_ID=devops-directive-storybooks
+PROJECT_ID=devops-directive-goodtinstory
 ZONE=us-central1-a
 
 run-local:
@@ -49,11 +49,11 @@ SSH_STRING=palas@storybooks-vm-$(ENV)
 OAUTH_CLIENT_ID=542106262510-8ki8hqgu7kmj2b3arjdqvcth3959kmmv.apps.googleusercontent.com
 
 GITHUB_SHA?=latest
-LOCAL_TAG=storybooks-app:$(GITHUB_SHA)
+LOCAL_TAG=goodtinstory-app:$(GITHUB_SHA)
 REMOTE_TAG=gcr.io/$(PROJECT_ID)/$(LOCAL_TAG)
 
-CONTAINER_NAME=storybooks-api
-DB_NAME=storybooks
+CONTAINER_NAME=gootinstory-api
+DB_NAME=goodtinstory
 
 ssh: check-env
 	gcloud compute ssh $(SSH_STRING) \
@@ -86,7 +86,7 @@ deploy: check-env
 			--restart=unless-stopped \
 			-p 80:3000 \
 			-e PORT=3000 \
-			-e \"MONGO_URI=mongodb+srv://storybooks-user-$(ENV):$(call get-secret,atlas_user_password_$(ENV))@storybooks-$(ENV).kkwmy.mongodb.net/$(DB_NAME)?retryWrites=true&w=majority\" \
+			-e \"MONGO_URI=mongodb+srv://goodtinstory-user-$(ENV):$(call get-secret,atlas_user_password_$(ENV))@storybooks-$(ENV).kkwmy.mongodb.net/$(DB_NAME)?retryWrites=true&w=majority\" \
 			-e GOOGLE_CLIENT_ID=$(OAUTH_CLIENT_ID) \
 			-e GOOGLE_CLIENT_SECRET=$(call get-secret,google_oauth_client_secret) \
 			$(REMOTE_TAG) \

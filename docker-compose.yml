@@ -7,25 +7,25 @@ services:
     ports:
       - '3000:3000'
     networks:
-      - storybooks-app
+      - goodtinstory-app
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - mongo
   mongo:
-    image: mongo:3.6-xenial
+    image: mongo:latest
     environment:
-      - MONGO_INITDB_DATABASE=storybooks
+      - MONGO_INITDB_DATABASE=goodtinstory
     ports:
-      - '27017:27017'
+      - 
     networks:
-      - storybooks-app
+      - goodtinstory-app
     volumes:
       - mongo-data:/data/db
 
 networks:
-  storybooks-app:
+  goodtinstory-app:
     driver: bridge
 
 volumes:
